@@ -23,10 +23,15 @@ describe('backend-gitty routes', () => {
   });
 
   it('should login and redirect user back to Posts', async () => {
-    const req = await request
+    const res = await request
       .agent(app)
       .get('/api/v1/github/login/callback?code=42')
       .redirects(1);
-    expect(req.req.path).toEqual('/api/v1/posts');
+    expect(res.req.path).toEqual('/api/v1/posts');
+  });
+
+  it('should logout the user via the DELETE route', async () => {
+    const res = await request.delete('/api/v1/github/sessions');
+    expect(res.body).toEqual({ message: 'Sign out succesful' });
   });
 });
