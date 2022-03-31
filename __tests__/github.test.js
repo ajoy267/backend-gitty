@@ -31,7 +31,7 @@ describe('backend-gitty routes', () => {
   });
 
   it('should logout the user via the DELETE route', async () => {
-    const res = await request.delete('/api/v1/github/sessions');
-    expect(res.body).toEqual({ message: 'Sign out succesful' });
+    const res = await request.agent(app).delete('/api/v1/github/sessions');
+    expect(res.body).toEqual({ message: 'Sign out successful' });
   });
 });
