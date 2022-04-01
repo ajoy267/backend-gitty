@@ -12,7 +12,7 @@ CREATE TABLE github_users (
 
 CREATE TABLE posts (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_post TEXT
+    user_post VARCHAR(255)
 );
 
 INSERT INTO 
